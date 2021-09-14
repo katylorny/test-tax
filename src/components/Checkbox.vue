@@ -1,6 +1,11 @@
 <template>
   <label :class="[`checkbox`, checked ? `checked` : ``]">
-    <input class="checkbox__input" type="checkbox">
+    <input
+        class="checkbox__input"
+        type="checkbox"
+        :checked="vmodelprop"
+        @change="e"
+    >
     <span class="checkbox__label">
       <slot/>
     </span>
@@ -13,6 +18,10 @@
 
 export default {
   name: "Checkbox",
+  model: {
+    prop: `vmodelprop`,
+    event: `vmodelevent`
+  },
   props: {
     checked: {
       type: Boolean,
@@ -20,6 +29,15 @@ export default {
     },
     number: {
       type: Number
+    },
+    vmodelprop: {
+      type: Boolean
+    }
+  },
+  methods: {
+    e(e) {
+      console.log(e.target.checked);
+      this.$emit(`vmodelevent`, e.target.checked)
     }
   }
 }

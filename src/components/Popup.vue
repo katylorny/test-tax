@@ -26,7 +26,7 @@
             Итого можете внести в качестве досрочных:
           </p>
 
-          <Checkbox v-for="year in years" :checked="true" :number="year.id" :key="year.id">
+          <Checkbox v-for="(year, i) in years" :checked="year.checked" :number="year.id" :key="year.id" v-model="years[i].checked">
             {{ year.taxDeduction }} рублей
           </Checkbox>
         </div>
