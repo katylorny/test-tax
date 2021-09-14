@@ -1,5 +1,5 @@
 <template>
-  <button class="close-button">
+  <button class="close-button" @click="$emit(`click`)">
     <img :src="closeButtonIcon" alt="Закрыть">
   </button>
 </template>

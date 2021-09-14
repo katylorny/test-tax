@@ -3,13 +3,27 @@
     <p class="text-input__label">
       <slot/>
     </p>
-    <input :class="[`text-input__input`, isDisabled ? `disabled` : ``]" type="text" :placeholder="placeholder" :disabled="isDisabled">
+    <input
+        :class="[`text-input__input`, isDisabled ? `disabled` : ``, isError ? `text-input__input--error` : ``]"
+        type="text"
+        :placeholder="placeholder"
+        :disabled="isDisabled"
+        :value="vmodelprop"
+        @change="$emit('vmodelevent', $event.target.value)"
+    >
+    <span class="text-input__error-text" v-if="isError">
+      Поле обязательно для заполнения
+    </span>
   </label>
 </template>
 
 <script>
 export default {
   name: "Input",
+  model: {
+    prop: 'vmodelprop',
+    event: 'vmodelevent'
+  },
   props: {
     placeholder: {
       type: String,
@@ -18,8 +32,15 @@ export default {
     isDisabled: {
       type: Boolean,
       default: false
+    },
+    isError: {
+      type: Boolean,
+      default: false
+    },
+    vmodelprop: {
+      type: String
     }
-  }
+  },
 }
 </script>
 
@@ -79,6 +100,23 @@ export default {
   &::placeholder {
     color: #808080;
   }
+}
+
+.text-input__input--error {
+  border-color: #EA0029;
+
+  &:hover,
+  &:focus {
+    border-color: #EA0029;
+  }
+}
+
+.text-input__error-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EA0029;
 }
 
 </style>

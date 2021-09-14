@@ -1,11 +1,11 @@
 <template>
-  <div class="layout">
+  <div class="layout" @click.self="$emit(`close-popup`)">
     <div class="popup">
       <div class="popup__header">
         <h2 class="popup__title">
           Налоговый вычет
         </h2>
-        <CloseButton class="popup__close-button"/>
+        <CloseButton class="popup__close-button" @click="$emit(`close-popup`)"/>
       </div>
       <div class="popup__content">
         <p class="popup__text">
@@ -13,29 +13,22 @@
           от своего официального годового дохода.
         </p>
 
-        <Input class="popup__text-input">
+        <Input v-model="salary" class="popup__text-input" :is-error="isError">
           Ваша зарплата в месяц
         </Input>
 
-        <Button class="popup__calculate-button" button-type="text">
+        <Button class="popup__calculate-button" button-type="text" @click="onCalculateButtonClick">
           Рассчитать
         </Button>
 
-        <div class="popup__early-payments">
+        <div class="popup__early-payments" v-if="isEarlyPaymentShowing">
           <p class="popup__p">
             Итого можете внести в качестве досрочных:
           </p>
 
-          <Checkbox :checked="true">
-            78 000 рублей в 1-ый год
+          <Checkbox v-for="year in years" :checked="true" :number="year.id" :key="year.id">
+            {{ year.taxDeduction }} рублей
           </Checkbox>
-          <Checkbox>
-            78 000 рублей в 1-ый год
-          </Checkbox>
-          <Checkbox>
-            78 000 рублей в 1-ый год
-          </Checkbox>
-
         </div>
 
         <div class="popup__decrease-choice">
@@ -72,7 +65,59 @@ export default {
     Button,
     Input,
     CloseButton
-  }
+  },
+  data() {
+    return {
+      // decreaseChoice:
+      isEarlyPaymentShowing: false,
+      years: [],
+      salary: '',
+      isError: false,
+    }
+  },
+  methods: {
+    onCalculateButtonClick() {
+
+      if (!this.salary) {
+        console.log(11111);
+        this.isError = true
+        return
+      } else {
+        this.isError = false
+      }
+      this.years = []
+      this.isEarlyPaymentShowing = true
+      this.calculateTax()
+    },
+    calculateTax() {
+
+      // Допустим, квартира дороже 2млн
+      let max = 260000
+
+      // годовой доход
+      const annualIncome = Number(this.salary) * 12
+
+      // налоговый вычет в год
+      const taxDeductionPerYear = annualIncome * 0.13
+
+      while (max > 0) {
+        if (max > taxDeductionPerYear) {
+          this.years.push({
+            id: this.years.length + 1,
+            checked: true,
+            taxDeduction: taxDeductionPerYear
+          })
+        } else {
+          this.years.push({
+            id: this.years.length + 1,
+            checked: true,
+            taxDeduction: max
+          })
+        }
+        max = max - taxDeductionPerYear
+      }
+    },
+  },
 }
 </script>
 

@@ -2,18 +2,24 @@
   <label :class="[`checkbox`, checked ? `checked` : ``]">
     <input class="checkbox__input" type="checkbox">
     <span class="checkbox__label">
-    <slot/>
-  </span>
+      <slot/>
+    </span>
+
+    <span class="checkbox__year"> в {{ number }} год </span>
   </label>
 </template>
 
 <script>
+
 export default {
   name: "Checkbox",
   props: {
     checked: {
       type: Boolean,
       default: false
+    },
+    number: {
+      type: Number
     }
   }
 }
@@ -67,6 +73,12 @@ export default {
 }
 
 .checkbox__label {
+  font-size: 14px;
+}
+
+.checkbox__year {
+  color: #808080;
+  font-size: 14px;
 
 }
 </style>
