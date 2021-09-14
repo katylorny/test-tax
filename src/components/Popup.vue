@@ -101,19 +101,11 @@ export default {
       const taxDeductionPerYear = annualIncome * 0.13
 
       while (max > 0) {
-        if (max > taxDeductionPerYear) {
-          this.years.push({
-            id: this.years.length + 1,
-            checked: true,
-            taxDeduction: taxDeductionPerYear
-          })
-        } else {
-          this.years.push({
-            id: this.years.length + 1,
-            checked: true,
-            taxDeduction: max
-          })
-        }
+        this.years.push({
+              id: this.years.length + 1,
+              checked: true,
+              taxDeduction: max > taxDeductionPerYear ? taxDeductionPerYear : max
+            })
         max = max - taxDeductionPerYear
       }
     },

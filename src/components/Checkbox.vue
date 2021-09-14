@@ -10,7 +10,7 @@
       <slot/>
     </span>
 
-    <span class="checkbox__year"> в {{ number }} год </span>
+    <span class="checkbox__year"> {{ number === 2 ? `во` : `в`}} {{ number }}-й год </span>
   </label>
 </template>
 
