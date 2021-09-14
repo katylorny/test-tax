@@ -35,15 +35,15 @@
           <p class="popup__p">
             Что уменьшаем?
           </p>
-          <RadioButton class="popup__radio-button" :is-active="true">
+          <RadioButton class="popup__radio-button" :is-active="true" value="pay" v-model="decreaseChoice" name="decrease">
             Платёж
           </RadioButton>
-          <RadioButton class="popup__radio-button">
+          <RadioButton class="popup__radio-button" value="time" v-model="decreaseChoice" name="decrease">
             Срок
           </RadioButton>
         </div>
       </div>
-      <Button class="popup__add-button" button-type="red">
+      <Button class="popup__add-button" button-type="red" @click="$emit(`close-popup`)">
         Добавить
       </Button>
     </div>
@@ -68,7 +68,7 @@ export default {
   },
   data() {
     return {
-      // decreaseChoice:
+      decreaseChoice: 'pay',
       isEarlyPaymentShowing: false,
       years: [],
       salary: '',

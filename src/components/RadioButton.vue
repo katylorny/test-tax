@@ -1,6 +1,13 @@
 <template>
-  <label :class="[`radio-button`, isActive ? `radio-button--active` : ``]">
-    <input class="radio-button__input" type="radio" :checked="isActive">
+  <label :class="[`radio-button`, isChecked ? `radio-button--active` : ``]">
+    <input
+        class="radio-button__input"
+        type="radio"
+        :checked="isChecked"
+        :value="value"
+        :name="name"
+        @click="$emit(`vmodelevent`, $event.target.value)"
+    >
     <span class="radio-button__text">
        <slot/>
     </span>
@@ -10,12 +17,28 @@
 <script>
 export default {
   name: "RadioButton",
+  model: {
+    prop: `vmodelprop`,
+    event: `vmodelevent`
+  },
   props: {
-    isActive: {
-      type: Boolean,
-      default: false
+    vmodelprop: {
+      type: String
+    },
+    value: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
     }
-  }
+  },
+  computed: {
+    isChecked() {
+      return this.vmodelprop === this.value
+    }
+  },
 }
 </script>
 

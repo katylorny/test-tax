@@ -4,7 +4,7 @@
         class="checkbox__input"
         type="checkbox"
         :checked="vmodelprop"
-        @change="e"
+        @change="$emit(`vmodelevent`, $event.target.checked)"
     >
     <span class="checkbox__label">
       <slot/>
@@ -34,12 +34,6 @@ export default {
       type: Boolean
     }
   },
-  methods: {
-    e(e) {
-      console.log(e.target.checked);
-      this.$emit(`vmodelevent`, e.target.checked)
-    }
-  }
 }
 </script>
 
