@@ -21,6 +21,23 @@
           Рассчитать
         </Button>
 
+        <div class="popup__early-payments">
+          <p class="popup__p">
+            Итого можете внести в качестве досрочных:
+          </p>
+
+          <Checkbox :checked="true">
+            78 000 рублей в 1-ый год
+          </Checkbox>
+          <Checkbox>
+            78 000 рублей в 1-ый год
+          </Checkbox>
+          <Checkbox>
+            78 000 рублей в 1-ый год
+          </Checkbox>
+
+        </div>
+
         <div class="popup__decrease-choice">
           <p class="popup__p">
             Что уменьшаем?
@@ -45,10 +62,12 @@ import CloseButton from "./CloseButton";
 import Input from "./Input";
 import Button from "./Button";
 import RadioButton from "./RadioButton";
+import Checkbox from "./Checkbox";
 
 export default {
   name: "Popup",
   components: {
+    Checkbox,
     RadioButton,
     Button,
     Input,
@@ -61,12 +80,17 @@ export default {
 .layout {
   position: absolute;
   background: #b3b3b3;
-  width: 100%;
-  height: 100%;
+  padding: 20px;
+  min-width: 100%;
+  min-height: 100%;
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 }
 
 .popup {
@@ -75,6 +99,14 @@ export default {
   background: #FFFFFF;
   border-radius: 30px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0;
+    min-height: 100vh;
+  }
 }
 
 .popup__header {
@@ -107,7 +139,12 @@ export default {
 }
 
 .popup__p {
+  font-size: 14px;
   margin: 0 32px 0 0;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  color: #000000;
 }
 
 .popup__decrease-choice {
@@ -130,6 +167,14 @@ export default {
 
 .popup__add-button {
   width: 100%;
+
+  @media (max-width: 768px) {
+    margin-top: auto;
+  }
+}
+
+.popup__early-payments {
+  margin-bottom: 20px;
 }
 
 </style>
