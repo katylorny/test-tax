@@ -37,6 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .button {
+  font-family: 'Lab Grotesque', Arial, sans-serif;
   border-radius: 6px;
   padding: 16px 32px;
   display: flex;

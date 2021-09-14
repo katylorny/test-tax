@@ -3,7 +3,7 @@
     <Button class="tax-button" button-type="transparent">
       Налоговый вычет
     </Button>
-    <Popup></Popup>
+    <Popup v-if="isPopupOpened"></Popup>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ import Popup from "./components/Popup";
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isPopupOpened: true
+    }
+  },
   components: {
     Popup,
     Button
@@ -23,6 +28,8 @@ export default {
 
 <style lang="scss">
 
+@import "assets/styles/fonts";
+
 * {
   box-sizing: border-box;
 }
@@ -30,6 +37,7 @@ export default {
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: 'Lab Grotesque', Arial, sans-serif;
 }
 
 #app {

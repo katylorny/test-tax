@@ -39,6 +39,7 @@ export default {
 }
 
 .text-input__input {
+  font-family: 'Lab Grotesque', Arial, sans-serif;
   border: 1px solid #DFE3E6;
   height: 40px;
   font-style: normal;
@@ -51,6 +52,7 @@ export default {
   width: 100%;
 
   &::placeholder {
+    font-family: 'Lab Grotesque', Arial, sans-serif;
     color: #BEC5CC;
     padding: 0;
     font-style: normal;
