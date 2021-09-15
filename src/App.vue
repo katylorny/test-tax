@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Button class="tax-button" button-type="transparent" @click="openPopup">
+    <v-button class="tax-button" button-type="transparent" @click="openPopup">
       Налоговый вычет
-    </Button>
-    <Popup v-if="isPopupOpened" @close-popup="closePopup"></Popup>
+    </v-button>
+    <popup v-if="isPopupOpened" @close-popup="closePopup"></popup>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   },
   components: {
     Popup,
-    Button
+    VButton: Button
   },
   methods: {
     openPopup() {

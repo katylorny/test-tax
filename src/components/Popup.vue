@@ -5,7 +5,7 @@
         <h2 class="popup__title">
           Налоговый вычет
         </h2>
-        <CloseButton class="popup__close-button" @click="$emit(`close-popup`)"/>
+        <close-button class="popup__close-button" @click="$emit(`close-popup`)"/>
       </div>
       <div class="popup__content">
         <p class="popup__text">
@@ -13,39 +13,39 @@
           от своего официального годового дохода.
         </p>
 
-        <Input v-model="salary" class="popup__text-input" :is-error="isError">
+        <v-input v-model="salary" class="popup__text-input" :is-error="isError">
           Ваша зарплата в месяц
-        </Input>
+        </v-input>
 
-        <Button class="popup__calculate-button" button-type="text" @click="onCalculateButtonClick">
+        <v-button class="popup__calculate-button" button-type="text" @click="onCalculateButtonClick">
           Рассчитать
-        </Button>
+        </v-button>
 
         <div class="popup__early-payments" v-if="isEarlyPaymentShowing">
           <p class="popup__p">
             Итого можете внести в качестве досрочных:
           </p>
 
-          <Checkbox v-for="(year, i) in years" :number="year.id" :key="year.id" v-model="years[i].checked">
+          <checkbox v-for="(year, i) in years" :number="year.id" :key="year.id" v-model="years[i].checked">
             {{ year.taxDeduction }} рублей
-          </Checkbox>
+          </checkbox>
         </div>
 
         <div class="popup__decrease-choice">
           <p class="popup__p">
             Что уменьшаем?
           </p>
-          <RadioButton class="popup__radio-button" :is-active="true" value="pay" v-model="decreaseChoice" name="decrease">
+          <radio-button class="popup__radio-button" :is-active="true" value="pay" v-model="decreaseChoice" name="decrease">
             Платёж
-          </RadioButton>
-          <RadioButton class="popup__radio-button" value="time" v-model="decreaseChoice" name="decrease">
+          </radio-button>
+          <radio-button class="popup__radio-button" value="time" v-model="decreaseChoice" name="decrease">
             Срок
-          </RadioButton>
+          </radio-button>
         </div>
       </div>
-      <Button class="popup__add-button" button-type="red" @click="$emit(`close-popup`)">
+      <v-button class="popup__add-button" button-type="red" @click="$emit(`close-popup`)">
         Добавить
-      </Button>
+      </v-button>
     </div>
   </div>
 </template>
@@ -62,8 +62,8 @@ export default {
   components: {
     Checkbox,
     RadioButton,
-    Button,
-    Input,
+    VButton: Button,
+    VInput: Input,
     CloseButton
   },
   data() {
