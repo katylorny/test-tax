@@ -10,7 +10,7 @@
       <slot/>
     </span>
 
-    <span class="checkbox__year"> {{ number === 2 ? `во` : `в`}} {{ number }}-й год </span>
+    <span class="checkbox__year"> {{ number === 2 ? `во` : `в`}} {{ number | formatYearNumber }} год </span>
   </label>
 </template>
 
@@ -30,6 +30,30 @@ export default {
       type: Boolean
     }
   },
+  filters: {
+    formatYearNumber(yearNumber) {
+
+      // ый - по умолчанию
+
+      // ой
+      const firstArray = [2, 6, 7, 8]
+
+      //ий
+      const secondArray = [3]
+
+      let ending;
+
+      if (firstArray.includes(yearNumber)) {
+        ending = 'ой'
+      } else if (secondArray.includes(yearNumber)) {
+        ending = 'ий'
+      } else {
+        ending = 'ый'
+      }
+
+      return yearNumber + '-' + ending
+    }
+  }
 }
 </script>
 
