@@ -1,5 +1,5 @@
 <template>
-  <label :class="[`checkbox`, checked ? `checked` : ``]">
+  <label :class="[`checkbox`, vmodelprop ? `checked` : ``]">
     <input
         class="checkbox__input"
         type="checkbox"
@@ -23,10 +23,6 @@ export default {
     event: `vmodelevent`
   },
   props: {
-    checked: {
-      type: Boolean,
-      default: false
-    },
     number: {
       type: Number
     },

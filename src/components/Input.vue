@@ -5,11 +5,13 @@
     </p>
     <input
         :class="[`text-input__input`, isDisabled ? `disabled` : ``, isError ? `text-input__input--error` : ``]"
-        type="text"
+        type="number"
         :placeholder="placeholder"
         :disabled="isDisabled"
         :value="vmodelprop"
         @change="$emit('vmodelevent', $event.target.value)"
+        min='0'
+        oninput="validity.valid||(value='');"
     >
     <span class="text-input__error-text" v-if="isError">
       Поле обязательно для заполнения

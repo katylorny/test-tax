@@ -26,7 +26,7 @@
             Итого можете внести в качестве досрочных:
           </p>
 
-          <Checkbox v-for="(year, i) in years" :checked="year.checked" :number="year.id" :key="year.id" v-model="years[i].checked">
+          <Checkbox v-for="(year, i) in years" :number="year.id" :key="year.id" v-model="years[i].checked">
             {{ year.taxDeduction }} рублей
           </Checkbox>
         </div>
@@ -98,7 +98,7 @@ export default {
       const annualIncome = Number(this.salary) * 12
 
       // налоговый вычет в год
-      const taxDeductionPerYear = annualIncome * 0.13
+      const taxDeductionPerYear = Math.round(annualIncome * 0.13)
 
       while (max > 0) {
         this.years.push({
