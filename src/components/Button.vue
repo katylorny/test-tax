@@ -52,7 +52,7 @@ export default {
   font-size: 16px;
   line-height: 24px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 12px 24px;
     font-weight: 500;
     font-size: 12px;

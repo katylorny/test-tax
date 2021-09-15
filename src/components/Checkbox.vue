@@ -65,7 +65,7 @@ export default {
   width: 100%;
   position: relative;
   padding-top: 18px;
-  padding-bottom: 18px;
+  padding-bottom: 19px;
 
   &::before {
     content: "";

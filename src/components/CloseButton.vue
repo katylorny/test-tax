@@ -26,7 +26,7 @@ export default {
   padding: 0;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 12px;
     height: 12px;
   }
