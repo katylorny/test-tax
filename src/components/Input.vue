@@ -74,6 +74,12 @@ export default {
   background: transparent;
   width: 100%;
 
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   &::placeholder {
     font-family: 'Lab Grotesque', Arial, sans-serif;
     color: #BEC5CC;
