@@ -10,7 +10,7 @@
       <slot/>
     </span>
 
-    <span class="checkbox__year"> {{ number === 2 ? `во` : `в`}} {{ number | formatYearNumber }} год </span>
+    <span class="checkbox__year"> {{ yearNumber === 2 ? `во` : `в`}} {{ yearNumber | formatYearNumber }} год </span>
   </label>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     event: `vmodelevent`
   },
   props: {
-    number: {
+    yearNumber: {
       type: Number
     },
     vmodelprop: {
