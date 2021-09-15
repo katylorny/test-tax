@@ -1,10 +1,5 @@
-const path = require('path');
 module.exports = {
-    configureWebpack: {
-        resolve: {
-            alias: {
-                '@img': path.resolve(__dirname, '/src/assets/img'),
-            },
-        },
-    }
+    publicPath: process.env.NODE_ENV === 'production'
+        ? '/test-tax/'
+        : '/'
 }
